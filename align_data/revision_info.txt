@@ -1,0 +1,7 @@
+arguments: D:\LVTN\SmartDevice_Integrated_ChatGPT\main.py
+--------------------
+tensorflow version: 1.15.5
+--------------------
+git hash: b''
+--------------------
+b''
