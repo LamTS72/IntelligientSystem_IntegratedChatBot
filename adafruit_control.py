@@ -9,7 +9,7 @@ num_face = None
 num_face1 = None
 
 class AdafruitControl:
-    def __init__(self, username='sonlam7220', key='aio_sOtQ47bBmi1MOD8hAU8a9u4U9RFH'):
+    def __init__(self, username='', key=''):
         self.AIO_USERNAME = username
         self.AIO_KEY = key
         self.AIO_FEED_ID = ["sensor1", "sensor2", "notification0", "notification1"]

@@ -1,7 +1,7 @@
 import openai
 
-#openai.api_key = "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"
-openai.api_key = "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"
+
+openai.api_key = ""
 model_id = 'text-davinci-003'
 def ChatGPT_conversation(conversation):
     response = openai.ChatCompletion.create(
