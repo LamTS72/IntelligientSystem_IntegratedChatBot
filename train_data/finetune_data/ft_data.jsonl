@@ -1,0 +1,56 @@
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Turn on the meeting room light." },{ "role": "assistant", "content": "Yes, the meeting room light is on." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Turn on the meeting room light, please." },{ "role": "assistant", "content": "Yes, the meeting room light is on." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Turn off the meeting room light." },{ "role": "assistant", "content": "Yes, the meeting room light is off." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Turn off the meeting room light, please." },{ "role": "assistant", "content": "Yes, the meeting room light is off." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "The meeting room light on." },{ "role": "assistant", "content": "The meeting room light is on." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "The meeting room light on, please." },{ "role": "assistant", "content": "The meeting room light is on." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "The meeting room light off." },{ "role": "assistant", "content": "The meeting room light is off." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "The meeting room light off, please." },{ "role": "assistant", "content": "The meeting room light is off." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Mở cây đèn phòng họp." },{ "role": "assistant", "content": "Vâng, đèn phòng họp đã mở." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Hãy mở cây đèn phòng họp." },{ "role": "assistant", "content": "Vâng, đèn phòng họp đã mờ." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Tắt cây đèn phòng họp." },{ "role": "assistant", "content": "Vâng, đèn phòng họp đã tắt." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Hãy tắt cây đèn phòng họp." },{ "role": "assistant", "content": "Vâng, đèn phòng họp đã tắt." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Mở đèn phòng họp." },{ "role": "assistant", "content": "Đèn phòng họp đã mở." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Hãy mở đèn phòng họp." },{ "role": "assistant", "content": "Đèn phòng họp đã mờ." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Tắt đèn phòng họp." },{ "role": "assistant", "content": "Đèn phòng họp đã tắt." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Hãy tắt đèn phòng họp." },{ "role": "assistant", "content": "Đèn phòng họp đã tắt." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Turn on the meeting room fan." },{ "role": "assistant", "content": "Yes, the meeting room fan is on." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Turn on the meeting room fan, please." },{ "role": "assistant", "content": "Yes, the meeting room fan is on." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Turn off the meeting room fan." },{ "role": "assistant", "content": "Yes, the meeting room fan is off." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Turn off the meeting room fan, please." },{ "role": "assistant", "content": "Yes, the meeting room fan is off." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "The meeting room fan on." },{ "role": "assistant", "content": "The meeting room fan is on." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "The meeting room fan on, please." },{ "role": "assistant", "content": "The meeting room fan is on." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "The meeting room fan off." },{ "role": "assistant", "content": "The meeting room fan is off." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "The meeting room fan off, please." },{ "role": "assistant", "content": "The meeting room fan is off." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Mở cây quạt phòng họp." },{ "role": "assistant", "content": "Vâng, quạt phòng họp đã mở." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Hãy mở cây quạt phòng họp." },{ "role": "assistant", "content": "Vâng, quạt phòng họp đã mờ." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Tắt cây quạt phòng họp." },{ "role": "assistant", "content": "Vâng, quạt phòng họp đã tắt." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Hãy tắt cây quạt phòng họp." },{ "role": "assistant", "content": "Vâng, quạt phòng họp đã tắt." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Mở quạt phòng họp." },{ "role": "assistant", "content": "Quạt phòng họp đã mở." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Hãy mở quạt phòng họp." },{ "role": "assistant", "content": "Quạt phòng họp đã mờ." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Tắt quạt phòng họp." },{ "role": "assistant", "content": "Quạt phòng họp đã tắt." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Hãy tắt quạt phòng họp." },{ "role": "assistant", "content": "Quạt phòng họp đã tắt." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Who are you?" },{ "role": "assistant", "content": "My name is Eric, who is your home assistant." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Bạn là ai?" },{ "role": "assistant", "content": "Tôi là Eric, trợ lý nhà thông minh của bạn." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Bây giờ là mấy giờ ở [place]?" },{ "role": "assistant", "content": "Bây giờ ở [place] là " }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "What time is it at [place]?" },{ "role": "assistant", "content": "Now, at [place] is " }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "What time at [place]?" },{ "role": "assistant", "content": "Now, at [place] is " }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Thời tiết ở [place] như thế nào?" },{ "role": "assistant", "content": "Thời tiết ở [place] thì " }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "What is the weather like at [place]?" },{ "role": "assistant", "content": "The weather at [place] is " }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "What the weather like at [place]?" },{ "role": "assistant", "content": "The weather at [place] is " }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Open the door." },{ "role": "assistant", "content": "Yes, The door is open." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Open the door, please." },{ "role": "assistant", "content": "Yes, The door is open." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Close the door." },{ "role": "assistant", "content": "Yes, The door is close." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Close the door, please." },{ "role": "assistant", "content": "Yes, The door is close." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "The door open." },{ "role": "assistant", "content": "The door is open." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "The door open, please." },{ "role": "assistant", "content": "The door is open." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "The door close." },{ "role": "assistant", "content": "The door is close." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "The door close, please." },{ "role": "assistant", "content": "The door is close." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Mở cửa." },{ "role": "assistant", "content": "Vâng, cửa đã mở." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Hãy mở cửa." },{ "role": "assistant", "content": "Vâng, cửa đã mờ." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Đóng cửa." },{ "role": "assistant", "content": "Vâng, cửa đã đóng." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Hãy đóng cửa." },{ "role": "assistant", "content": "Vâng, cửa đã đóng." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Cửa mở." },{ "role": "assistant", "content": "Cửa đã mở." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Mở cửa ra." },{ "role": "assistant", "content": "Cửa đã mờ." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Đóng cửa lại." },{ "role": "assistant", "content": "Cửa đã đóng." }]}
+{"messages": [{ "role": "system", "content": "You are a home assistant." },{ "role": "user", "content": "Cửa đóng." },{ "role": "assistant", "content": "Cửa đã đóng." }]}
