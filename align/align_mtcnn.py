@@ -6,12 +6,14 @@ from __future__ import print_function
 from scipy import misc
 import sys
 import os
-import argparse
+import imageio.v2 as imageio
+from PIL import Image
+import logging
+logging.getLogger('tensorflow').setLevel(logging.ERROR)
+os.environ["KMP_AFFINITY"] = "noverbose"
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow.compat.v1 as tf
-import numpy as np
-import random
-from time import sleep
-
+tf.autograph.set_verbosity(3)
 sys.path.append('../')
 from facenet.facenet import *
 from align.detect_face import *
@@ -68,7 +70,8 @@ def align_mtcnn(input_dir,
                 print(image_path)
                 if not os.path.exists(output_filename):
                     try:
-                        img = misc.imread(image_path)
+                        img = imageio.imread(image_path)
+                        #img = misc.imread(image_path)
                     except (IOError, ValueError, IndexError) as e:
                         errorMessage = '{}: {}'.format(image_path, e)
                         print(errorMessage)
@@ -111,14 +114,18 @@ def align_mtcnn(input_dir,
                                 bb[2] = np.minimum(det[2] + margin / 2, img_size[1])
                                 bb[3] = np.minimum(det[3] + margin / 2, img_size[0])
                                 cropped = img[bb[1]:bb[3], bb[0]:bb[2], :]
-                                scaled = misc.imresize(cropped, (image_size, image_size), interp='bilinear')
+                                # scaled = misc.imresize(cropped, (image_size, image_size), interp='bilinear')
+                                                                
+                                cropped = Image.fromarray(cropped)
+                                scaled = cropped.resize((image_size, image_size), Image.BILINEAR)
                                 nrof_successfully_aligned += 1
                                 filename_base, file_extension = os.path.splitext(output_filename)
                                 if detect_multiple_faces:
                                     output_filename_n = "{}_{}{}".format(filename_base, i, file_extension)
                                 else:
                                     output_filename_n = "{}{}".format(filename_base, file_extension)
-                                misc.imsave(output_filename_n, scaled)
+                                #misc.imsave(output_filename_n, scaled)
+                                imageio.imwrite(output_filename_n, scaled)
                                 text_file.write('%s %d %d %d %d\n' % (output_filename_n, bb[0], bb[1], bb[2], bb[3]))
                         else:
                             print('Unable to align "%s"' % image_path)

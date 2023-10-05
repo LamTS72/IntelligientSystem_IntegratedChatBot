@@ -4,6 +4,7 @@ from PIL import Image, ImageTk
 from home_page import *
 from Adafruit_IO import MQTTClient
 from common_share import *
+import adafruit_control
 
 class Startup:
     def __init__(self, root):
@@ -29,13 +30,12 @@ class Startup:
         self.run_Ada()
 
     def run_Home(self):
-        self.root.withdraw()
-        self.home=Toplevel(self.root)
-        self.app=HomeApp(self.home)
+        global connected_done
+        if adafruit_control.connected_done == True:
+            self.root.withdraw()
+            self.home=Toplevel(self.root)
+            self.app=HomeApp(self.home)
 
-    # def exit_program(self):
-    #     #sys.exit()
-    #     self.adafruit_run.disconnected()
 
     def run_Ada(self):
         #Using daemon thread that have low priority and run in background without affect other threads

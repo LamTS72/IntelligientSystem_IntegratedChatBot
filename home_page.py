@@ -28,76 +28,75 @@ class HomeApp(tk.Toplevel):
         bg_img = Label(self.root, image=self.photo)
         bg_img.place(x=0, y=0, width=840, height=550)
 
-
-        #title section
-        title = Label(bg_img, text="Smart System For Face Recognition And ChatGPT",
-                      font=("verdana", 12, "bold"), bg="white", fg="navyblue")
+        #title section -> HOMEPAGE
+        title = Label(bg_img, text="Smart System For Face Recognition And ChatGPT",font=("verdana", 12, "bold"), bg="white", fg="navyblue")
         title.place(x=0, y=0, width=840, height=45)
-
         # Create menu bar
         menu_bar = tk.Menu(self.root)
         self.root.config(menu=menu_bar)
-
         chatbot_menu = tk.Menu(menu_bar, tearoff=False)
         menu_bar.add_cascade(label="Chatbot", menu=chatbot_menu)
         chatbot_menu.add_command(label="Open ChatGPT", command=self.start_chatbot)
-
         camera_menu = tk.Menu(menu_bar, tearoff=False)
         menu_bar.add_cascade(label="Camera", command=lambda: threading.Thread(target=self.start_cam).start())
-
         register_menu = tk.Menu(menu_bar, tearoff=False)
         menu_bar.add_cascade(label="Register", command=lambda: threading.Thread(target=self.start_register).start())
-
         quit_menu = tk.Menu(menu_bar, tearoff=False)
         menu_bar.add_cascade(label="Exit", command=lambda: exit_program())
-
-        # register button
-        reg_box = Image.open(r"View\cam.jpg")
-        reg_box = reg_box.resize((90, 90))
-        self.register_box = ImageTk.PhotoImage(reg_box, Image.LANCZOS)
-        reg_btn = Button(bg_img, command=self.start_register, image=self.register_box, cursor="hand2")
-        reg_btn.place(x=120, y=200, width=90, height=90)
-        reg_btn1 = Button(bg_img, command=self.start_register, text="Register", cursor="hand2",
-                          font=("tahoma", 10, "bold"), bg="white", fg="navyblue")
-        reg_btn1.place(x=120, y=290, width=90, height=40)
-
-
-        # recognition button
+        # recognition button checkin -> HOMEPAGE
         recog_box = Image.open(r"View\recognition.jpg")
         recog_box = recog_box.resize((90, 90))
         self.recognition_box = ImageTk.PhotoImage(recog_box, Image.LANCZOS)
         recog_btn = Button(bg_img, command=self.start_cam, image=self.recognition_box, cursor="hand2")
-        recog_btn.place(x=300, y=200, width=90, height=90)
-        recog_btn1 = Button(bg_img, command=self.start_cam, text="Recognition", cursor="hand2",
-                          font=("tahoma", 10, "bold"), bg="white", fg="navyblue")
-        recog_btn1.place(x=300, y=290, width=90, height=40)
+        recog_btn.place(x=120, y=140, width=90, height=90)
+        recog_btn1 = Button(bg_img, command=self.start_cam, text="Check-in", cursor="hand2", font=("tahoma", 10, "bold"), bg="white", fg="navyblue")
+        recog_btn1.place(x=120, y=230, width=90, height=40)
 
-        # chatgpt button
+        # recognition button checkin -> HOMEPAGE
+        recog_box2 = Image.open(r"View\recognition.jpg")
+        recog_box2 = recog_box2.resize((90, 90))
+        self.recognition_box2 = ImageTk.PhotoImage(recog_box2, Image.LANCZOS)
+        recog_btn2= Button(bg_img, command=self.start_cam, image=self.recognition_box2, cursor="hand2")
+        recog_btn2.place(x=300, y=140, width=90, height=90)
+        recog_btn12 = Button(bg_img, command=self.start_cam, text="Check-out", cursor="hand2", font=("tahoma", 10, "bold"), bg="white", fg="navyblue")
+        recog_btn12.place(x=300, y=230, width=90, height=40)
+
+        # chatgpt button -> HOMEPAGE
         chat_box = Image.open(r"View\chat.jpg")
         chat_box = chat_box.resize((90, 90))
         self.chatgpt_box = ImageTk.PhotoImage(chat_box, Image.LANCZOS)
         chat_btn = Button(bg_img, command=self.start_chatbot, image=self.chatgpt_box, cursor="hand2")
-        chat_btn.place(x=120, y=380, width=90, height=90)
-        chat_btn1 = Button(bg_img, command=self.start_chatbot, text="ChatGPT", cursor="hand2",
+        chat_btn.place(x=120, y=320, width=90, height=90)
+        chat_btn1 = Button(bg_img, command=self.start_chatbot, text="ChatGPT", cursor="hand2",font=("tahoma", 10, "bold"), bg="white", fg="navyblue")
+        chat_btn1.place(x=120, y=410, width=90, height=40)
+
+        # register button -> HOMEPAGE
+        reg_box = Image.open(r"View\cam.jpg")
+        reg_box = reg_box.resize((90, 90))
+        self.register_box = ImageTk.PhotoImage(reg_box, Image.LANCZOS)
+        reg_btn = Button(bg_img, command=self.start_register, image=self.register_box, cursor="hand2")
+        reg_btn.place(x=300, y=320, width=90, height=90)
+        reg_btn1 = Button(bg_img, command=self.start_register, text="Register", cursor="hand2",
                           font=("tahoma", 10, "bold"), bg="white", fg="navyblue")
-        chat_btn1.place(x=120, y=470, width=90, height=40)
+        reg_btn1.place(x=300, y=410, width=90, height=40)
 
-
-        # exit button
+        # exit button -> HOMEPAGE
         exit_box = Image.open(r"View\exi.jpg")
-        exit_box = exit_box.resize((90, 90))
+        exit_box = exit_box.resize((60, 30))
         self.quit_box = ImageTk.PhotoImage(exit_box, Image.LANCZOS)
         quit_btn = Button(bg_img, command=exit_program, image=self.quit_box, cursor="hand2")
-        quit_btn.place(x=300, y=380, width=90, height=90)
-        quit_btn1 = Button(bg_img, command=exit_program, text="Exit", cursor="hand2",
-                          font=("tahoma", 10, "bold"), bg="white", fg="navyblue")
-        quit_btn1.place(x=300, y=470, width=90, height=40)
+        quit_btn.place(x=700, y=460, width=60, height=30)
+        quit_btn1 = Button(bg_img, command=exit_program, text="Exit", cursor="hand2",font=("tahoma", 10, "bold"), bg="white", fg="navyblue")
+        quit_btn1.place(x=700, y=490, width=60, height=30)
        
     def start_cam(self):
+        global authenticate_val
         fr = FaceRecognition()
         fr.run_multicam_recognition()
-
-
+        if authenticate_val["door0"] == "Valid":
+            authenticate_val["door0"] = "Invalid"
+            self.start_chatbot()
+            
     def start_register(self):
         name = simpledialog.askstring("Enter Name", "Please enter name:")
         fr = FaceRecognition()
@@ -105,15 +104,15 @@ class HomeApp(tk.Toplevel):
         fr.train_data()
         messagebox.showinfo("Message Box", "Collection and Completed Training")
 
-
     def start_chatbot(self):
         self.root.withdraw()
         self.chatbot_window = Toplevel(self.root)
         self.chatbot_app = ChatbotApp(self.chatbot_window)
 
-
-#openai.api_key = "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"
-openai.api_key = "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"
+root = Tk()
+obj = HomeApp(root)
+root.mainloop()
+openai.api_key = config.get("API-KEY")
 
 class ChatbotApp(tk.Toplevel):
     def __init__(self, root):
@@ -167,24 +166,21 @@ class ChatbotApp(tk.Toplevel):
         micro_box = Image.open(r"View//micro.png")
         micro_box = micro_box.resize((30, 30))
         self.micro_img = ImageTk.PhotoImage(micro_box, Image.LANCZOS)
-        self.micro_button1 = ttk.Button(input_frame, command=lambda: threading.Thread(target=self.handle_inputspeech).start(),
-                                   image=self.micro_img, cursor="hand2")
+        self.micro_button1 = ttk.Button(input_frame, command=lambda: threading.Thread(target=self.handle_inputspeech).start(),image=self.micro_img, cursor="hand2")
 
         self.micro_button1.pack(side="right", padx=5)
         # Create send button
         send_box = Image.open(r"View//tra1.jpg")
         send_box = send_box.resize((30, 30))
         self.send_img = ImageTk.PhotoImage(send_box, Image.LANCZOS)
-        self.submit_button = ttk.Button(input_frame, text="SEND", command=self.handle_input,
-                                   image=self.send_img, cursor="hand2")
+        self.submit_button = ttk.Button(input_frame, text="SEND", command=self.handle_input,image=self.send_img, cursor="hand2")
         self.submit_button.pack(side="right", padx=5)
 
         # Create language button
         flag_box = Image.open(r"View//vn.jpg")
         flag_box = flag_box.resize((20, 20))
         self.flag_img = ImageTk.PhotoImage(flag_box, Image.LANCZOS)
-        self.flag_button = ttk.Button(input_frame, command=self.handle_languages,
-                                   image=self.flag_img, cursor="hand2")
+        self.flag_button = ttk.Button(input_frame, command=self.handle_languages,image=self.flag_img, cursor="hand2")
         self.flag_button.pack(side="left", padx=5)
 
 

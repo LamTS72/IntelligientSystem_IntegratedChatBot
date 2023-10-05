@@ -44,12 +44,16 @@ wf.close()
 
 #Note: you need to be using OpenAI Python v0.27.0 for the code below to work
 import openai
-openai.api_key = "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"
+import os
+from dotenv import dotenv_values
+config = dotenv_values(".env")
+
+openai.api_key = config.get("API-KEY")
 
 audio_file= open("output.wav", "rb")
 transcript = openai.Audio.transcribe("whisper-1", audio_file)
-print(transcript)
-
+print(transcript["text"].encode('utf-8').decode('utf-8'))
+#os.remove("output.wav")
 # import whisper
 
 # model = whisper.load_model("base")

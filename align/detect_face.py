@@ -5,10 +5,14 @@ from __future__ import print_function
 from six import string_types, iteritems
 
 import numpy as np
-import tensorflow.compat.v1 as tf
 import cv2
 import os
-
+import logging
+logging.getLogger('tensorflow').setLevel(logging.ERROR)
+os.environ["KMP_AFFINITY"] = "noverbose"
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+import tensorflow.compat.v1 as tf
+tf.autograph.set_verbosity(3)
 
 def layer(op):
     """Decorator for composable network layers."""

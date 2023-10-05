@@ -4,8 +4,10 @@ import json
 #import tiktoken # for token counting
 import numpy as np
 from collections import defaultdict
+from dotenv import dotenv_values
+config = dotenv_values(".env")
 
-openai.api_key = "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"
+openai.api_key = config.get("API-KEY")
 
 path = 'train_data/finetune_data/ft_data.jsonl'
 path_save ='train_data/finetune_data'

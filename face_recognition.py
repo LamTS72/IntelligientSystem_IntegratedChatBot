@@ -7,12 +7,15 @@ import threading
 import time
 from sklearn.svm import SVC
 
-import adafruit_control
+#import adafruit_control
 from align.align_mtcnn import *
 from facenet.face_contrib import *
 
+result_val = {"result_0":None, "result_1":None}
+check_val = {"check_0":False,"check_1":False}
+
 class FaceRecognition:
-    def __init__(self, data_input='train_data', data_align='align_data', model_pb='models/20180402-114759.pb',
+    def __init__(self, data_input='train_data/faces', data_align='align_data', model_pb='models/20180402-114759.pb',
                  classifier_filename='models/trained/trained_model.pkl', batch_size=1000, image_size=160, seed=123,
                  model_checkpoint='models'):
         self.data_input = data_input
@@ -23,6 +26,7 @@ class FaceRecognition:
         self.image_size = image_size
         self.seed = seed
         self.model_checkpoint = model_checkpoint
+        self.cnt = 0
 
     def face_collections(self, name):
         print("Opening camera for collecting data ................")
@@ -30,8 +34,8 @@ class FaceRecognition:
         img_counter = 0
         camera = cv2.VideoCapture(0)
         # Create a folder to store images
-        if not os.path.exists('train_data/' + name):
-            os.makedirs('train_data/' + name)
+        if not os.path.exists('train_data/faces/' + name):
+            os.makedirs('train_data/faces/' + name)
 
         count = 0
         prev_frame_time = 0
@@ -53,7 +57,7 @@ class FaceRecognition:
                 img = cv2.resize(frame, (224, 224))
                 # img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
                 # Save the image to a folder
-                img_name = "train_data/{}/img_{}.jpg".format(name, img_counter)
+                img_name = "train_data/faces/{}/img_{}.jpg".format(name, img_counter)
                 cv2.imwrite(img_name, img)
 
                 print("{} saved!".format(img_name))
@@ -121,7 +125,7 @@ class FaceRecognition:
                 print('Saved classifier model to file "%s"' % classifier_filename_exp)
 
     def run_recognition(self, cam):
-        global name_recognition, name_recogniton1, num_face, num_face1
+        global result_val, check_val#, name_recognition_0, name_recognition_1, num_face_0, num_face_1
         frame_interval = 3
         fps_display_interval = 5
         frame_rate = 0
@@ -140,9 +144,10 @@ class FaceRecognition:
         window_name = "Video Cam: " + str(cam)
         face_recognition = Recognition(self.model_checkpoint, self.classifier_filename)
         start_time = time.time()
-
+        new_frame_time = time.time()
+        frame_cnt = 0
         while True:
-            list_name = []
+            list_name = {}
             # Capture frame-by-frame
             ret, frame = video_capture.read()
 
@@ -161,39 +166,71 @@ class FaceRecognition:
                 for idx, face in enumerate(faces):
                     face_bb = face.bounding_box.astype(int)
                     cv2.rectangle(frame, (face_bb[0], face_bb[1]), (face_bb[2], face_bb[3]),  (0, 255, 0), 1)
+                    temp_name = {}
                     if face.name and face.prob:
-                        if face.prob > 0.65:
+                        if face.prob > 0.7:
                             class_name = face.name
+                            self.cnt = self.cnt + 1
+                            temp_name = {"name"+str(idx + 1): class_name.upper()}
                         else:
                             class_name = 'Unknown'
+                            self.cnt = 0
+                            temp_name = {"name" + str(idx + 1): class_name.upper()}
                             # class_name = face.name
                         cv2.putText(frame, class_name, (face_bb[0], face_bb[3] + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.6,
                                     (0, 255, 0), thickness=2, lineType=2)
-                        # cv2.putText(frame, '{:.02f}'.format(face.prob * 100), (face_bb[0], face_bb[3] + 40),
-                        #             cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 0), thickness=1, lineType=2)
+                        cv2.putText(frame, '{:.02f}'.format(face.prob * 100), (face_bb[0], face_bb[3] + 40),
+                                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 0), thickness=1, lineType=2)
 
-                        list_name.append(class_name)
-                if cam == 0:
-                    adafruit_control.name_recognition = str(list_name)
-                    adafruit_control.num_face = len(faces)
-                else:
-                    adafruit_control.name_recognition1 = str(list_name)
-                    adafruit_control.num_face1 = len(faces)
+                        print(temp_name)
+                        list_name.update(temp_name)
 
-            cv2.putText(frame, str(frame_rate) + " fps", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0),
-                        thickness=2, lineType=2)
+                # if cam == 0:
+                #     adafruit_control.name_recognition = str(list_name)
+                #     adafruit_control.num_face = len(faces)
+                #     print(adafruit_control.AdafruitControl.)
+                # else:
+                #     adafruit_control.name_recognition1 = str(list_name)
+                #     adafruit_control.num_face1 = len(faces)
 
             frame_count += 1
-
+            frame_cnt += 1
+            elapsed_time = time.time() - new_frame_time
+            fps = frame_cnt / elapsed_time
+            cv2.putText(frame, str(fps) + " fps", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0),
+            thickness=2, lineType=2)
             cv2.imshow(window_name, frame)
+
+            if self.cnt == 10:
+                if cam == 0:
+                    print("OK")
+                    video_capture.release()
+                    #name_recognition_0 = str(list_name)
+                    num_face_0 = len(faces)
+                    result_val["result_0"] = "Valid", class_name.upper(),num_face_0
+                    check_val["check_0"] = True
+                    return result_val["result_0"]
+                else:
+                    print("OK")
+                    video_capture.release()
+                    #name_recognition_1 = str(list_name)
+                    num_face_1 = len(faces)
+                    result_val["result_1"] = "Valid", class_name.upper(), num_face_1
+                    check_val["check_1"] = True
+                    return result_val["result_1"]
+                
 
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 if cam == 0:
-                    adafruit_control.name_recognition = None
-                    adafruit_control.num_face = None
+                    # adafruit_control.name_recognition = None
+                    # adafruit_control.num_face = None
+                    #name_recognition = None
+                    num_face_0 = None
                 else:
-                    adafruit_control.name_recognition1 = None
-                    adafruit_control.num_face1 = None
+                    # adafruit_control.name_recognition1 = None
+                    # adafruit_control.num_face1 = None
+                    #name_recognition1 = None
+                    num_face_1 = None
                 break
 
         video_capture.release()
@@ -217,56 +254,6 @@ class FaceRecognition:
             t.join()
 
         cv2.destroyAllWindows()
-
-
-    # def dev_forGUI(self, video_capture, face_recognition):
-    #     frame_interval = 3
-    #     fps_display_interval = 5
-    #     frame_rate = 0
-    #     frame_count = 0
-    #
-    #     start_time = time.time()
-    #
-    #     # Capture frame-by-frame
-    #     ret, frame = video_capture.read()
-    #
-    #
-    #     width = frame.shape[1]
-    #     height = frame.shape[0]
-    #
-    #     if (frame_count % frame_interval) == 0:
-    #         faces = face_recognition.identify(frame)
-    #
-    #         # Check our current fps
-    #         end_time = time.time()
-    #         if (end_time - start_time) > fps_display_interval:
-    #             frame_rate = int(frame_count / (end_time - start_time))
-    #             start_time = time.time()
-    #             frame_count = 0
-    #
-    #     # helpier.add_overlays(frame, faces, frame_rate, colors)
-    #     if faces is not None:
-    #         for idx, face in enumerate(faces):
-    #             face_bb = face.bounding_box.astype(int)
-    #             cv2.rectangle(frame, (face_bb[0], face_bb[1]), (face_bb[2], face_bb[3]), (0, 255, 0), 1)
-    #             if face.name and face.prob:
-    #                 if face.prob > 0.6:
-    #                     class_name = face.name
-    #                 else:
-    #                     class_name = 'Unknown'
-    #                     # class_name = face.name
-    #                 cv2.putText(frame, class_name, (face_bb[0], face_bb[3] + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.6,
-    #                             (0, 255, 0), thickness=2, lineType=2)
-    #                 # cv2.putText(frame, '{:.02f}'.format(face.prob * 100), (face_bb[0], face_bb[3] + 40),
-    #                 #             cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 0), thickness=1, lineType=2)
-    #
-    #     cv2.putText(frame, str(frame_rate) + " fps", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0),
-    #                 thickness=2, lineType=2)
-    #
-    #
-    #     frame_count += 1
-    #     return True, frame
-
 
 
 

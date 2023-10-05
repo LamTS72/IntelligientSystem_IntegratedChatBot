@@ -1,9 +1,11 @@
 import openai
 import json
 import re
-#openai.api_key = "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"
-openai.api_key = "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"
-#model_id = 'ft:gpt-3.5-turbo-0613:personal::7xt5PHUf'
+from dotenv import dotenv_values
+config = dotenv_values(".env")
+
+openai.api_key = config.get("API-KEY")
+
 model_id = 'ft:gpt-3.5-turbo-0613:personal::7xt5PHUf'
 def generate_response(user_input, role="user"):
 
